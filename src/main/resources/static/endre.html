@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="//code.jquery.com/jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <title>Endre Registrering</title>
+    <script src="endre.js"></script>
+    <script src="validering.js"></script>
+    <h2>Endreregistrering:</h2>
+</head>
+<body>
+<div class="container">
+
+    <div class="col-md-3 col-sm-3">
+        <input type="hidden" id="id"/>
+        <div class="form-group">
+            <lable for="personnr">Personnummer:</lable>
+            <input id="personnr" type="text" class="form-control" onchange="validerPresonnr()">
+            <span id="feilPersonnr" STYLE="color: red"></span>
+        </div>
+        <div class="form-group">
+            <lable for="fornavn">Fornavn:</lable>
+            <input id="fornavn" type="text" class="form-control" onchange="validerFornavn()">
+            <span id="feilFornavn" STYLE="color: red"></span>
+        </div>
+        <div class="form-group">
+            <lable for="etternavn">Etternavn:</lable>
+            <input id="etternavn" type="text" class="form-control" onchange="validerEtternavn()">
+            <span id="FeilEtternavn" STYLE="color: red"></span>
+        </div>
+        <div class="form-group">
+            <lable for="kjennetegn">Kjennetegn:</lable>
+            <input id="kjennetegn" type="text" class="form-control" onchange="validerKjennetegn()">
+            <span id="feilKjennetegn" STYLE="color: red"></span>
+        </div>
+        <div class="form-group">
+            <lable for="bilmerke">Bilmerke:</lable>
+            <div id="bilmerke" class="dropdown" ></div>
+        </div>
+        <div class="form-group">
+            <lable for="bilmodell">Bilmodell:</lable>
+            <div id="bilmodell" class="dropdown" ></div>
+        </div>
+        <div>
+            <button class="btn btn-primary" onclick="regEndre()">Endre registrering</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
