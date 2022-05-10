@@ -3,60 +3,29 @@
 <head>
     <script src="//code.jquery.com/jquery-3.6.0.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-    <script src="index.js"></script>
-    <script src="validering.js"></script>
     <meta charset="UTF-8">
-    <title>Motorvogn Regestrering</title>
-    <h2>Motorvognregistrer:</h2>
+    <script src="index.js"></script>
+    <title>Logg inn</title>
+    <h2>Logg inn:</h2>
 </head>
 <body>
 <div class="container">
     <div class="row">
         <div class="col-md-3 col-sm-3">
             <div class="form-group">
-                <lable for="personnr">Personnummer:</lable>
-                <input id="personnr" type="text" onchange="validerPresonnr()" class="form-control">
-                <span id="feilPersonnr" STYLE="color: red"></span>
+                <lable for="brukernavn">brukernavn:</lable>
+                <input id="brukernavn" type="text" class="form-control">
             </div>
             <div class="form-group">
-                <lable for="fornavn">Fornavn:</lable>
-                <input id="fornavn" type="text" class="form-control" onchange="validerFornavn()">
-                <span id="feilFornanv" STYLE="color: red"></span>
-            </div>
-            <div class="form-group">
-                <lable for="etternavn">Etternavn:</lable>
-                <input id="etternavn" type="text" class="form-control" onchange="validerEtternavn()">
-                <span id="feilEtternavn" STYLE="color: red"></span>
-            </div>
-            <div class="form-group">
-                <lable for="kjennetegn">Kjennetegn:</lable>
-                <input id="kjennetegn" type="text" class="form-control" onchange="validerKjennetegn()">
-                <span id="feilKjennetegn" STYLE="color: red"></span>
-            </div>
-            <div class="form-group">
-                <lable for="bilmerke">Bilmerke:</lable>
-                <div id="bilmerke" class="dropdown" ></div>
-            </div>
-            <div class="form-group">
-                <lable for="bilmodell">Bilmodell:</lable>
-                <div id="bilmodell" class="dropdown" ></div>
+                <lable for="passord">Passord:</lable>
+                <input id="passord" type="password" class="form-control">
             </div>
             <div>
-                <button class="btn btn-primary" onclick="reg()">Registrer</button>
+                <button class="btn btn-primary" onclick="logginn()">Logg inn</button>
             </div>
-        </div>
-        <div class="col-md-9 col-sm-9">
-            <h3> Alle bilene:</h3>
-            <div id="feil" style="color: red"></div>
-            <div>
-                <table class="table table-striped" id="output"></table>
-            </div>
-            <div>
-                <button class="btn btn-danger" onclick="slettAlleBilene()">slett alle bilene</button>
-            </div>
+            <div id="feilLogginn" STYLE="color: red">..</div>
         </div>
     </div>
 </div>
-
 </body>
 </html>

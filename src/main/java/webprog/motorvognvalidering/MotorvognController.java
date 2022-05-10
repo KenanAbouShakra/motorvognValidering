@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -50,12 +51,17 @@ public class MotorvognController {
         return alleBiler;
     }
     @GetMapping("/hentAlle")
-    public List<MotorvognReg> hentAlle(HttpServletResponse response) throws IOException{
-        List<MotorvognReg> alleRegister=rep.hentAlle();
-        if(alleRegister==null){
-            response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(),"Feil i DB, prøv igjen senere");
+    public List<MotorvognReg> hentAlle(HttpServletResponse response) throws IOException {
+        if (session.getAttribute("innlogget")!=null) {
+            List<MotorvognReg> alleRegister = rep.hentAlle();
+            if (alleRegister == null) {
+                response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Feil i DB, prøv igjen senere");
+            }
+            return alleRegister;
+        }else {
+            response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(),"Kan ikke vise regester, Du må logge inn");
+            return null;
         }
-        return alleRegister;
     }
     @GetMapping("hentForEndring")
     public MotorvognReg hentForEndring(int id){
@@ -77,5 +83,22 @@ public class MotorvognController {
         if(!rep.slettAlle()){
             response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(),"Feil i DB, prøv igjen senere");
         }
+    }
+    @Autowired
+    private HttpSession session;
+    @GetMapping("/logginn")
+    private boolean logginn(String brukernavn, String passord, HttpServletResponse response) throws IOException{
+        if(rep.logginn(brukernavn,passord)){
+            session.setAttribute("innlogget",true);
+            return true;
+        }else{
+            response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(),"Feil brukernavn eller passord");
+            return false;
+        }
+
+    }
+    @GetMapping("/loggut")
+    private void loggut(){
+        session.removeAttribute("innlogget");
     }
 }

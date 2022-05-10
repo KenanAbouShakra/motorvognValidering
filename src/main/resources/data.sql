@@ -5,3 +5,6 @@ INSERT INTO Motorvogn(merke, modell) VALUES('Mercedes', 'GLX');
 INSERT INTO Motorvogn(merke, modell) VALUES('BMW', 'X5');
 INSERT INTO Motorvogn(merke, modell) VALUES('Audi', 'A4');
 INSERT INTO Motorvogn(merke, modell) VALUES('Mercedes', 'GLS');
+INSERT INTO Bruker(brukernavn, passord) VALUES ( 'Kenan', 'test1' );
+INSERT INTO Bruker(brukernavn, passord) VALUES ( 'Shatha', 'test2' );
+INSERT INTO Bil(id, personnr, fornavn, etternavn, kjennetegn, bilmerke, bilmodell) VALUES (0, 12345678900, 'Kenan', 'Abou', 'LK12345', 'Tesle', 'modell-3');

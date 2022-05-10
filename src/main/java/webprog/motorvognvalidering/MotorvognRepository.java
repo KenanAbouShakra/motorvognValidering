@@ -66,5 +66,19 @@ public class MotorvognRepository {
         List<Motorvogn> alleMotorvogner=db.query(sql, new BeanPropertyRowMapper(Motorvogn.class));
         return alleMotorvogner;
     }
+    public boolean logginn(String brukernavn, String passord){
+        String sql="SELECT COUNT(*) FROM Bruker WHERE brukernavn=? AND passord=? ";
+        try{
+            int funnet=db.queryForObject(sql, Integer.class, brukernavn, passord);
+            if(funnet>0){
+                return true;
+            }else{
+                return false;
+            }
+        }catch (Exception e){
+            return false;
+        }
+
+    }
 
 }
